@@ -1,8 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.1.1
 
-### Initial 0.1.0 MVP
+- Shorter setup and contribution documentation.
+- Consistent Python formatting; no behavior changes.
+
+## 0.1.0
 
 - Offline stateful failure scenarios for testing agent retry and booking policies.
 - Command-line demos, packaging metadata and an MIT license.

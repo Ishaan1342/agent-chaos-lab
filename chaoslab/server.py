@@ -1,4 +1,5 @@
 """Optional real MCP transport through the official SDK, never hand-rolled JSON-RPC."""
+
 import os
 from typing import Any
 from mcp.server import MCPServer
@@ -24,8 +25,14 @@ def quote(slot: str) -> dict[str, Any]:
 @server.tool(structured_output=True)
 def book(slot: str, expected_price_cents: int, idempotency_key: str) -> dict[str, Any]:
     """Simulate a booking. A timeout may happen AFTER the booking commits."""
-    return invoke("book", dict(slot=slot, expected_price_cents=expected_price_cents,
-                                  idempotency_key=idempotency_key))
+    return invoke(
+        "book",
+        dict(
+            slot=slot,
+            expected_price_cents=expected_price_cents,
+            idempotency_key=idempotency_key,
+        ),
+    )
 
 
 @server.tool(structured_output=True)
@@ -37,7 +44,9 @@ def get_booking(booking_id: str) -> dict[str, Any]:
 @server.tool(structured_output=True)
 def cancel(booking_id: str, idempotency_key: str) -> dict[str, Any]:
     """Cancel a simulated booking idempotently."""
-    return invoke("cancel", dict(booking_id=booking_id, idempotency_key=idempotency_key))
+    return invoke(
+        "cancel", dict(booking_id=booking_id, idempotency_key=idempotency_key)
+    )
 
 
 @server.tool(structured_output=True)

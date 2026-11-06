@@ -6,19 +6,26 @@ from .core import BookingWorld, SCENARIOS, ToolFault, run_scenario
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Offline agent reliability simulations")
+    parser = argparse.ArgumentParser(
+        description="Offline agent reliability simulations"
+    )
     sub = parser.add_subparsers(dest="command", required=True)
     demo = sub.add_parser("demo")
     demo.add_argument("--output", type=Path)
-    serve = sub.add_parser("serve-jsonl", help="Domain JSONL adapter, NOT the MCP protocol")
+    serve = sub.add_parser(
+        "serve-jsonl", help="Domain JSONL adapter, NOT the MCP protocol"
+    )
     serve.add_argument("--scenario", choices=SCENARIOS, default="clean")
     args = parser.parse_args()
     if args.command == "demo":
         safe = [run_scenario(s) for s in SCENARIOS]
         naive = run_scenario("timeout_after_commit", naive=True)
-        report = dict(schema_version=1, reference_policy_runs=safe,
-                      intentional_negative_control=naive,
-                      passed=all(r["passed"] for r in safe) and not naive["passed"])
+        report = dict(
+            schema_version=1,
+            reference_policy_runs=safe,
+            intentional_negative_control=naive,
+            passed=all(r["passed"] for r in safe) and not naive["passed"],
+        )
         text = json.dumps(report, indent=2)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)

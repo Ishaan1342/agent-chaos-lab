@@ -16,8 +16,8 @@ optional integrations. Do not call paid services from tests.
 - Add a regression test for behavior changes. Run relevant tests and packaging checks.
 - Keep fixtures synthetic or explicitly licensed; never include credentials,
   private logs, customer data, local environments or personal build records.
-- Preserve the documented MVP limitations. Do not present an oracle harness
-  result as model accuracy or a content hash as signed provenance.
+- Keep simulated faults distinct from real transport failures. Reference-policy
+  results are not model benchmarks.
 - Review your changes and be prepared to explain them. You are responsible
   for their correctness.
 - Be respectful and discuss technical disagreements constructively.

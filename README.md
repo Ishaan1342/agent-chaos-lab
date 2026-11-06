@@ -1,6 +1,12 @@
 # Agent Chaos Lab
 
-> **Early MVP · MIT · Python 3.11+**. Scope and integration limits are documented below.
+Python 3.11+ · MIT · Experimental
+
+An offline, stateful booking simulator for testing agent recovery policies.
+The key case: a booking succeeds, its response is lost, and a retry creates a
+second booking unless the client keeps the same idempotency key.
+
+[![Tests](https://github.com/Ishaan1342/agent-chaos-lab/actions/workflows/test.yml/badge.svg)](https://github.com/Ishaan1342/agent-chaos-lab/actions/workflows/test.yml)
 
 ## Install from this repository
 
@@ -11,13 +17,7 @@ python -m pip install -e .
 ```
 
 See [Contributing](CONTRIBUTING.md), [Security](SECURITY.md) and the
-[Changelog](CHANGELOG.md). GitHub CI results, once available, are separate from
-local test results.
-
-
-An offline, stateful booking simulator for testing an agent's recovery policy.
-The important case: **the booking succeeds, the response is lost, and a retry
-creates a second booking unless the client preserves its idempotency key**.
+[Changelog](CHANGELOG.md).
 
 ## Run the demo
 
@@ -29,10 +29,10 @@ python -m unittest discover -s tests -v
 ```
 
 The demo runs seven reference-policy scenarios and an intentionally broken
-negative control. The reference is deterministic Python, NOT an evaluated LLM.
+negative control. The reference is deterministic Python, not an evaluated model.
 It tests clean booking, pre-commit timeout, post-commit timeout, rate limiting,
 price changes, a slot taken after quoting, and a lost cancellation response.
-Every scenario emits a ledger, tool-call trace and invariant results.
+Every scenario emits booking state, a tool-call trace and invariant results.
 
 ## Connect an actual agent through MCP
 
