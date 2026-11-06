@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using this metadata."
+type: software
+title: "agent-chaos-lab"
+abstract: "Offline stateful failure scenarios for testing agent retry and booking policies. Early MVP; see README for limitations."
+version: 0.1.0
+license: MIT
+authors:
+  - family-names: Gill
+    given-names: Ishaan

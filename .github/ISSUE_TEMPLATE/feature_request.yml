@@ -1,0 +1,19 @@
+name: Feature request
+description: Describe a concrete use case before a substantial change
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope and existing alternatives
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How would we verify that it helps?

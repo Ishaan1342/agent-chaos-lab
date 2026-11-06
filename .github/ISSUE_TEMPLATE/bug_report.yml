@@ -1,0 +1,22 @@
+name: Bug report
+description: Report reproducible unexpected behavior
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include commands and synthetic inputs. Never include secrets or private records.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version, Python version and operating system
+    validations:
+      required: true

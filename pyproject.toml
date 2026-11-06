@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-chaos-lab"
+version = "0.1.0"
+description = "Stateful booking fault simulator for agent reliability tests"
+requires-python = ">=3.11"
+license = "MIT"
+readme = "README.md"
+authors = [{name = "Ishaan Gill"}]
+keywords = ["agents", "testing", "open-source"]
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.13"]
+
+[tool.setuptools.packages.find]
+include = ["chaoslab*"]
+
+[project.scripts]
+agent-chaos-lab = "chaoslab.__main__:main"
+
+[project.optional-dependencies]
+mcp = ["mcp==2.3.0"]
